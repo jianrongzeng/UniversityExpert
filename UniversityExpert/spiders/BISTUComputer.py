@@ -17,9 +17,9 @@ class BISTUComputer(CrawlSpider):
     def parse_detail(self,response):
         item = UniversityexpertItem()
         unit = "北京信息科技大学"
-        name = response.xpath('//text()[preceding-sibling::span[text()="制片国家/地区:"]]['
-                                         'following-sibling::br]').extract()
-        context = response.xpath("//div[@class='article']//text()").extract()
+        name = response.xpath('//text()[preceding-sibling::td[text()="姓名："]]').extract()
+        context = response.xpath("/html/body/div/table[1]/tbody/tr[5]/td/table/tbody/tr/td[3]").xpath(
+            'string(.)').extract()
         item['unit'] = unit
         item['name'] = name
         item['context'] = context

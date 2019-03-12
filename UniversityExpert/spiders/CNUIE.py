@@ -19,8 +19,8 @@ class CNUIESpider(CrawlSpider):
     def parse_detail(self, response):
         item = UniversityexpertItem()
         unit = '首都师范大学'
-        name = response.xpath("//div[@class='article']/h2/text()").extract()
-        context = response.xpath("//div[@class='article']/text()").extract()
+        name = response.xpath("//div[@class='articleTitle']/h2/text()").extract()
+        context = response.xpath("string(//div[@class='pageArticle'])").extract()
         item['unit'] = unit
         item['name'] = name
         item['context'] = context
